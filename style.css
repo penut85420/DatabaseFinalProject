@@ -10,10 +10,12 @@ a:link, :visited {
     color: blue; 
     text-decoration: none;
 }
+
 a:hover {
     color: blueviolet;
     text-decoration: none;
 }
+
 a:active {
     color:red;
     text-decoration: underline

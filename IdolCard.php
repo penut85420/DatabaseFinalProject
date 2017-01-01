@@ -1,17 +1,19 @@
 <?php include("func/db.php") ?>
 <html>
 <head>
-    <title>Idol Ability</title>
+    <title>Idol Card</title>
     <?php include("func/head.php") ?>
 </head>
 <body>
     <?php include("func/menu.php"); ?>
 
     <div class = "Search">
-    <form>
-        <input type = "text" class = "TextField">
-        <input type = "button" class = "Button" value = "Search">
+    <form method = "post" action = "IdolCard.php">
+        <input type = "text" name = "searchTarget">
+        <input type = "submit" value = "Search">
+        <a href = "IdolCard_add.php"><input type = "button" value = "Add"></a>
     </form>
+
     </div>
     <table class = "IdolCardTable">
         <tr>
