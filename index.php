@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>DB Final Project</title>
-    <link rel = "stylesheet" href = "style.css">
+    <?php include("func/head.php") ?>
 </head>
 <body>
     <?php include("func/menu.php"); ?>

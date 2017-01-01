@@ -1,5 +1,5 @@
 body {
-    font-family: consolas;
+    font-family: consolas, 微軟正黑體;
 }
 
 a {
@@ -21,6 +21,10 @@ a:active {
 
 .Search {
     width: 50%;
+}
+
+.Search input {
+    font-size: 12px;
 }
 
 .Search input[type = "text"] {
@@ -59,4 +63,9 @@ a:active {
 
 .IdolSettingAddTable td {
     text-align: center;
+}
+
+.IdolSettingAddTable input[type="submit"], input[type="text"] {
+    width: 100%;
+    font-size: 12px;
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Idol Setting</title>
-    <link rel = "stylesheet" href = "style.css">
+    <?php include("func/head.php") ?>
 </head>
 <body>
     <?php include("func/menu.php"); ?>
