@@ -43,6 +43,7 @@
             <th>CV</th>
         </tr>
         <?php
+            $searchTarget = "";
             if (isset($_POST["searchTarget"])) {
                 $sql = "SELECT * FROM idolsetting WHERE IdolName LIKE ?";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
