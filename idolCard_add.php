@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Idol Card</title>
+    <title>新增卡片</title>
     <?php include("com/head.php") ?>
 </head>
 <body>

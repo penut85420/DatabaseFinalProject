@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>偶像搜尋</title>
+    <title>新增偶像設定</title>
     <?php include("com/head.php") ?>
 </head>
 <body>
