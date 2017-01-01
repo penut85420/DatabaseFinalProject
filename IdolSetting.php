@@ -17,17 +17,17 @@
     </div>
     <table class = "IdolCardTable">
         <tr>
-            <th>Idol Name</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Age</th>
-            <th>Birthday</th>
-            <th>Blood Type</th>
-            <th>Three Size</th>
-            <th>Handedness</th>
-            <th>Constellation</th>
-            <th>Place</th>
-            <th>Interest</th>
+            <th>偶像</th>
+            <th>身高</th>
+            <th>體重</th>
+            <th>年齡</th>
+            <th>生日</th>
+            <th>血型</th>
+            <th>三圍</th>
+            <th>慣用手</th>
+            <th>星座</th>
+            <th>出生地</th>
+            <th>興趣</th>
             <th>CV</th>
         </tr>
         <?php
