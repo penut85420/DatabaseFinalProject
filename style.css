@@ -5,6 +5,7 @@ body {
 a {
     text-decoration: none;
 }
+
 a:link, :visited {
     color: blue; 
     text-decoration: none;
@@ -19,15 +20,15 @@ a:active {
 }
 
 .Search {
-    width: 26.5em;
+    width: 50%;
 }
 
-.Search input:first-child {
-    width: 78%;
+.Search input[type = "text"] {
+    width: 25%;
 }
 
-.Search input:last-child {
-    width: 18%
+.Search input[type = "button"], input[type = "submit"] {
+    width: 10%;
 }
 
 .IdolCardTable {
@@ -50,4 +51,12 @@ a:active {
 
 .IdolCardTable tr:nth-child(odd) {
     background-color: #fff;
+}
+
+.IdolSettingAddTable {
+    width: 100%;
+}
+
+.IdolSettingAddTable td {
+    text-align: center;
 }

@@ -9,11 +9,11 @@
 
     <div class = "Search">
     <form method = "post" action = "IdolSetting.php">
-        <input type = "text" name = "searchTarget" class = "TextField">
-        <input type = "submit" class = "Button" value = "Search">
+        <input type = "text" name = "searchTarget">
+        <input type = "submit" value = "Search">
+        <a href = "IdolSetting_add.php"><input type = "button" value = "Add"></a>
     </form>
-    <form action = "IdolSetting_add.php">
-    </form>
+
     </div>
     <table class = "IdolCardTable">
         <tr>

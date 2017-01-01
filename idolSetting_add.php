@@ -8,7 +8,7 @@
     <?php include("func/menu.php"); ?>
 	
 <form method = "post" action = "idolSetting_addsave.php">
-    <table class = "IdolCardTable">
+    <table class = "IdolSettingAddTable">
 			<tr>
 				<th>#</th>
 				<th>姓名</th>
@@ -24,20 +24,20 @@
 				<th>興趣</th>
 				<th>CV</th>
 			</tr>
-			<tr> 
-				<th><input type="submit" value="送出"></th>
-				<th><input type="text" name="IdolName"></th>
-				<th><input type="text" name="Height"></th>
-				<th><input type="text" name="Weight"></th>
-				<th><input type="text" name="age"></th>
-				<th><input type="text" name="Birthday"></th>
-				<th><input type="text" name="BloodType"></th>
-				<th><input type="text" name="ThreeSize"></th>
-				<th><input type="text" name="Handedness"></th>
-				<th><input type="text" name="Constellation"></th>
-				<th><input type="text" name="Place"></th>
-				<th><input type="text" name="Interest"></th>
-				<th><input type="text" name="CV"></th>
+			<tr>
+				<td><input type="submit" value="新增" style="width:100%;"></td>
+				<td><input type="text" name="IdolName"></td>
+				<td><input type="text" name="Height"></td>
+				<td><input type="text" name="Weight"></td>
+				<td><input type="text" name="age"></td>
+				<td><input type="text" name="Birtdday"></td>
+				<td><input type="text" name="BloodType"></td>
+				<td><input type="text" name="tdreeSize"></td>
+				<td><input type="text" name="Handedness"></td>
+				<td><input type="text" name="Constellation"></td>
+				<td><input type="text" name="Place"></td>
+				<td><input type="text" name="Interest"></td>
+				<td><input type="text" name="CV"></td>
 			</tr>
     </table>
 </form>
