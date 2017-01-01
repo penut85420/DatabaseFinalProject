@@ -22,12 +22,16 @@
             <th>Rarity</th>
         </tr>
         <?php
-            if (isset($_POST["searchTarget"])) 
-                $sql = "SELECT * FROM idolcard WHERE IdolName like" + $_POST["searchTarget"];
+            if (isset($_POST["searchTarget"]))
+                $sql = "SELECT * FROM idolcard WHERE IdolName like ?";
             else
                 $sql = "SELECT * FROM idolcard ORDER BY cid";
 
             if ($stmt = $db->prepare($sql)) {
+                if (isset($_POST["searchTarget"])) {
+                    $searchTarget = "%".$_POST["searchTarget"]."%";
+                    $stmt->bind_param("s", $searchTarget);
+                }
                 $stmt->execute();
                 $stmt->bind_result($CID, $CardName, $IdolName, $Type, $Rarity);
                 while ($stmt->fetch()) {
@@ -45,4 +49,4 @@
         ?>
     </table>
 </body>
-</html>
+</html

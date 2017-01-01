@@ -8,16 +8,16 @@
     <?php include("func/menu.php"); ?>
 
     <div class = "Search">
-    <form>
-        <input type = "text" class = "TextField">
-        <input type = "button" class = "Button" value = "Search">
+    <form method = "post" action = "IdolSetting.php">
+        <input type = "text" name = "searchTarget" class = "TextField">
+        <input type = "submit" class = "Button" value = "Search">
     </form>
     </div>
     <table class = "IdolCardTable">
         <tr>
             <th>Idol Name</th>
-            <th>Weight</th>
             <th>Height</th>
+            <th>Weight</th>
             <th>Age</th>
             <th>Birthday</th>
             <th>Blood Type</th>
@@ -29,7 +29,11 @@
             <th>CV</th>
         </tr>
         <?php
-            $sql = "SELECT * from idolsetting ORDER BY idolname";
+            if (isset($_POST["searchTarget"])) {
+                $sql = "SELECT * FROM idolsetting WHERE IdolName like ?";
+                $searchTarget = "%".$_POST["searchTarget"]."%";
+            } else
+                $sql = "SELECT * from idolsetting ORDER BY idolname";
             if ($stmt = $db->prepare($sql)) {
                 $stmt->execute();
                 $stmt->bind_result($IdolName, $Height, $Weight, $Age, $Birthday, $BloodType, $ThreeSize, $Handedness, $Constellation, $Place, $Interest, $CV);
