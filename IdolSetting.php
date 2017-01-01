@@ -13,8 +13,19 @@
         <input type = "submit" value = "Search">
         <a href = "IdolSetting_add.php"><input type = "button" value = "Add"></a>
     </form>
-
     </div>
+    
+    <div>
+		總偶像數為: 
+		<?php
+			$sql = "SELECT COUNT(*) FROM idolsetting";
+			if($result = mysqli_query($db,$sql)){
+				$rowcount= mysqli_fetch_row($result);
+				echo $rowcount[0];
+			}
+		?>
+	</div>
+
     <table class = "IdolCardTable">
         <tr>
             <th>偶像</th>
