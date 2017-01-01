@@ -43,13 +43,17 @@
             <th>技能</th>
         </tr>
         <?php
+            $searchTarget = "";
             if (isset($_POST["searchTarget"])) {
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ?";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
+            } else if (isset($_POST["searchTargetExa"])) {
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName=?";
+                $searchTarget = $_POST["searchTargetExa"];
             } else 
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY CID;";
             if ($stmt = $db->prepare($sql)) {
-                if (isset($_POST["searchTarget"]))
+                if ($searchTarget)
                     $stmt->bind_param("s", $searchTarget);
                 $stmt->execute();
                 $stmt->bind_result($CID, $Vocal, $Dance, $Visual, $Life, $Leader, $Skill, $CardName, $IdolName, $Type, $Rarity);
