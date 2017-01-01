@@ -18,16 +18,16 @@
     <table class = "IdolCardTable">
         <tr>
             <th>Card ID</th>
-            <th>Card Name</th>
-            <th>Idol Name</th>
-            <th>Rarity</th>
-            <th>Type</th>
+            <th>卡片名稱</th>
+            <th>偶像</th>
+            <th>稀有度</th>
+            <th>屬性</th>
             <th>Vocal</th>
             <th>Dance</th>
             <th>Visual</th>
             <th>Life</th>
-            <th>Leader</th>
-            <th>Skill</th>
+            <th>隊長技</th>
+            <th>技能</th>
         </tr>
         <?php
             $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY CID;";
