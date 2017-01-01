@@ -15,6 +15,16 @@
     </form>
 
     </div>
+	<div>
+		總卡片數為: 
+		<?php
+			$sql = "SELECT COUNT(*) FROM idolCard";
+			if($result = mysqli_query($db,$sql)){
+				$rowcount= mysqli_fetch_row($result);
+				echo $rowcount[0];
+			}
+		?>
+	</div>
     <table class = "IdolCardTable">
         <tr>
             <th>Card ID</th>
