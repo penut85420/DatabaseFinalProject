@@ -9,7 +9,7 @@
 
     <div class = "Search">
     <form method = "post" action = "IdolSetting.php">
-        <input type = "text" name = "searchTarget">
+        <input type = "text" name = "searchTarget" placeholder = "搜尋偶像名稱">
         <input type = "submit" value = "Search">
         <a href = "IdolSetting_add.php"><input type = "button" value = "Add"></a>
     </form>
@@ -44,11 +44,13 @@
         </tr>
         <?php
             if (isset($_POST["searchTarget"])) {
-                $sql = "SELECT * FROM idolsetting WHERE IdolName like ?";
+                $sql = "SELECT * FROM idolsetting WHERE IdolName LIKE ?";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
             } else
-                $sql = "SELECT * from idolsetting ORDER BY idolname";
+                $sql = "SELECT * FROM idolsetting ORDER BY idolname";
             if ($stmt = $db->prepare($sql)) {
+                if (isset($_POST["searchTarget"]))
+                    $stmt->bind_param("s", $searchTarget);
                 $stmt->execute();
                 $stmt->bind_result($IdolName, $Height, $Weight, $Age, $Birthday, $BloodType, $ThreeSize, $Handedness, $Constellation, $Place, $Interest, $CV);
                 while ($stmt->fetch()) {

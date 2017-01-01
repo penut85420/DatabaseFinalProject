@@ -9,7 +9,7 @@
 
     <div class = "Search">
     <form method = "post" action = "IdolCard.php">
-        <input type = "text" name = "searchTarget">
+        <input type = "text" name = "searchTarget" placeholder = "搜尋偶像名稱">
         <input type = "submit" value = "Search">
         <a href = "IdolCard_add.php"><input type = "button" value = "Add"></a>
     </form>
@@ -40,8 +40,14 @@
             <th>技能</th>
         </tr>
         <?php
-            $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY CID;";
+            if (isset($_POST["searchTarget"])) {
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ?";
+                $searchTarget = "%".$_POST["searchTarget"]."%";
+            } else 
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY CID;";
             if ($stmt = $db->prepare($sql)) {
+                if (isset($_POST["searchTarget"]))
+                    $stmt->bind_param("s", $searchTarget);
                 $stmt->execute();
                 $stmt->bind_result($CID, $Vocal, $Dance, $Visual, $Life, $Leader, $Skill, $CardName, $IdolName, $Type, $Rarity);
                 while ($stmt->fetch()) {
