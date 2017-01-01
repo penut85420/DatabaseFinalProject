@@ -5,14 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <table>
-        <tr>
-            <th><a href = "menu.php">首頁</a></th>
-            <th><a href = "IdolCard.php">卡片搜尋</a></th>
-			<th><a href = "idolSetting.php">偶像搜尋</a></th>
-            <th><a href = "Producer.php">製作人</a></th>
-        </tr>
-    </table>
+    <?php include("func/menu.php"); ?>
 	
 <form method = "post" action = "idolSetting_addsave.php">
     <table class = "IdolCardTable">

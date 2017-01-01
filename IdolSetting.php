@@ -12,6 +12,8 @@
         <input type = "text" name = "searchTarget" class = "TextField">
         <input type = "submit" class = "Button" value = "Search">
     </form>
+    <form action = "IdolSetting_add.php">
+    </form>
     </div>
     <table class = "IdolCardTable">
         <tr>
