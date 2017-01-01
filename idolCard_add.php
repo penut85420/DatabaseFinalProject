@@ -1,10 +1,10 @@
 <html>
 <head>
     <title>Idol Card</title>
-    <?php include("func/head.php") ?>
+    <?php include("com/head.php") ?>
 </head>
 <body>
-	<?php include("func/menu.php") ?>
+	<?php include("com/menu.php") ?>
 
 	<form action = "idolCard_addsave.php" method = "post">
     <table class = "IdolCardTable IdolSettingAddTable">

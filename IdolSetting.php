@@ -1,11 +1,11 @@
-<?php include("func/db.php"); ?>
+<?php include("com/db.php"); ?>
 <html>
 <head>
     <title>Idol Setting</title>
-    <?php include("func/head.php") ?>
+    <?php include("com/head.php") ?>
 </head>
 <body>
-    <?php include("func/menu.php"); ?>
+    <?php include("com/menu.php"); ?>
 
     <div class = "Search">
     <form method = "post" action = "IdolSetting.php">

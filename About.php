@@ -1,10 +1,10 @@
 <html>
 <head>
     <title>DB Final Project</title>
-    <?php include("func/head.php") ?>
+    <?php include("com/head.php") ?>
 </head>
 <body>
-    <?php include("func/menu.php"); ?>
+    <?php include("com/menu.php"); ?>
     工作分配
     <ul>
         <li>邱偉誠：</li>

@@ -1,5 +1,5 @@
 <?php
-	include("func/db.php");
+	include("com/db.php");
 	
 	$IdolName = $_POST["IdolName"];
 	$Height = $_POST["Height"];
@@ -22,7 +22,5 @@
 		$stmt->execute();
 		$stmt->close();
 		header('Location: idolsetting.php');
-	} else {
-		die('prepare() failed: '.$db->error);
 	}
 ?>

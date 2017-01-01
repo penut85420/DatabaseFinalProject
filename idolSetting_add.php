@@ -1,10 +1,10 @@
 <html>
 <head>
     <title>偶像搜尋</title>
-    <?php include("func/head.php") ?>
+    <?php include("com/head.php") ?>
 </head>
 <body>
-<?php include("func/menu.php"); ?>
+<?php include("com/menu.php"); ?>
 	
 <form method = "post" action = "idolSetting_addsave.php">
     <table class = "IdolSettingAddTable IdolCardTable">
@@ -29,9 +29,9 @@
 			<td><input type="text" name="Height"></td>
 			<td><input type="text" name="Weight"></td>
 			<td><input type="text" name="age"></td>
-			<td><input type="text" name="Birtdday"></td>
+			<td><input type="text" name="Birthday"></td>
 			<td><input type="text" name="BloodType"></td>
-			<td><input type="text" name="tdreeSize"></td>
+			<td><input type="text" name="ThreeSize"></td>
 			<td><input type="text" name="Handedness"></td>
 			<td><input type="text" name="Constellation"></td>
 			<td><input type="text" name="Place"></td>

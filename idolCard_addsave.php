@@ -1,5 +1,5 @@
 <?php
-	include("func/db.php");
+	include("com/db.php");
 	
 	$CID = $_POST["CID"];
 	$CardName = $_POST["CardName"];
