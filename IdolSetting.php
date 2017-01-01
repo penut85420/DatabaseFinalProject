@@ -26,7 +26,7 @@
 		?>
 	</div>
 
-
+    <form method = "POST" action = "IdolCard.php">
     <table class = "IdolCardTable">
         <tr>
             <th>偶像</th>
@@ -46,17 +46,21 @@
             if (isset($_POST["searchTarget"])) {
                 $sql = "SELECT * FROM idolsetting WHERE IdolName LIKE ?";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
-            } else
-                $sql = "SELECT * FROM idolsetting ORDER BY idolname";
+            } else if (isset($_POST["searchTargetExa"])) {
+                $sql = "SELECT * FROM idolsetting WHERE IdolName = ?";
+                $searchTarget = $_POST["searchTargetExa"];
+            } else $sql = "SELECT * FROM idolsetting ORDER BY idolname";
             if ($stmt = $db->prepare($sql)) {
-                if (isset($_POST["searchTarget"]))
+                if ($searchTarget)
                     $stmt->bind_param("s", $searchTarget);
                 $stmt->execute();
                 $stmt->bind_result($IdolName, $Height, $Weight, $Age, $Birthday, $BloodType, $ThreeSize, $Handedness, $Constellation, $Place, $Interest, $CV);
                 while ($stmt->fetch()) {
                     ?>
                     <tr>
-                    <td><?php echo $IdolName; ?></td>
+                    <td>
+                        <input type = "submit" name = "searchTargetExa" value = "<?php echo $IdolName; ?>">
+                    </td>
                     <td><?php echo $Height; ?></td>
                     <td><?php echo $Weight; ?></td>
                     <td><?php echo $Age; ?></td>
@@ -74,5 +78,6 @@
             }
         ?>
     </table>
+    </form>
 </body>
 </html>

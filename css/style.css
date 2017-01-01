@@ -59,6 +59,15 @@ a:active {
     background-color: #fff;
 }
 
+.IdolCardTable input[type=submit] {
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    color: blue;
+    text-decoration: none;
+}
+
 .IdolSettingAddTable {
     width: 100%;
 }
@@ -67,7 +76,7 @@ a:active {
     text-align: center;
 }
 
-.IdolSettingAddTable input[type="submit"], input[type="text"] {
+.IdolSettingAddTable input {
     width: 100%;
     font-size: 12px;
 }

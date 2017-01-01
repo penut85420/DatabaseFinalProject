@@ -19,13 +19,13 @@
 		$stmt->bind_param("issss", $CID, $CardName, $IdolName, $Type, $Rarity);
 		$stmt->execute();
 	}
-
+	if ($stmt->errno) echo $stmt->error;
 	$sql = "INSERT INTO idolability (CID, VOCAL, DANCE, VISUAL, LIFE, Leader, Skill) VALUES (?,?,?,?,?,?,?)";
 
 	if ($stmt = $db->prepare($sql)) {
 		$stmt->bind_param("iiiiiss", $CID, $VOCAL, $DANCE, $VISUAL, $LIFE, $Leader, $Skill);
 		$stmt->execute();
 	}
-
+	if ($stmt->errno) echo $stmt->error;
 	header('Location: idolcard.php');
 ?>

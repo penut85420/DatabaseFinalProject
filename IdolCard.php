@@ -15,6 +15,7 @@
     </form>
 
     </div>
+
 	<div>
 		總卡片數為: 
 		<?php
@@ -25,6 +26,8 @@
 			}
 		?>
 	</div>
+
+    <form method = "POST" action = "IdolSetting.php">
     <table class = "IdolCardTable">
         <tr>
             <th>Card ID</th>
@@ -52,10 +55,13 @@
                 $stmt->bind_result($CID, $Vocal, $Dance, $Visual, $Life, $Leader, $Skill, $CardName, $IdolName, $Type, $Rarity);
                 while ($stmt->fetch()) {
                     ?>
+                    
                     <tr>
                         <td><?php echo $CID; ?></td>
                         <td><?php echo $CardName; ?></td>
-                        <td><?php echo $IdolName; ?></td>
+                        <td>
+                            <input type = "submit" name = "searchTargetExa" value = "<?php echo $IdolName; ?>">
+                        </td>
                         <td><?php echo $Rarity; ?></td>
                         <td><?php echo $Type; ?></td>
                         <td><?php echo $Vocal; ?></td>
@@ -65,10 +71,12 @@
                         <td><?php echo $Leader; ?></td>
                         <td><?php echo $Skill; ?></td>
                     </tr>
+                    
                     <?php
                 }
             }
         ?>
     </table>
+    </form>
 </body>
 </html>
