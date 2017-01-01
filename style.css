@@ -1,0 +1,53 @@
+body {
+    font-family: consolas;
+}
+
+a {
+    text-decoration: none;
+}
+a:link, :visited {
+    color: blue; 
+    text-decoration: none;
+}
+a:hover {
+    color: blueviolet;
+    text-decoration: none;
+}
+a:active {
+    color:red;
+    text-decoration: underline
+}
+
+.Search {
+    width: 26.5em;
+}
+
+.Search input:first-child {
+    width: 78%;
+}
+
+.Search input:last-child {
+    width: 18%
+}
+
+.IdolCardTable {
+    border-collapse: collapse;
+}
+
+.IdolCardTable th {
+    border: 1px solid black;
+    width: 10em;
+    background: #aaa;
+}
+
+.IdolCardTable td {
+    border: 1px solid gray;
+}
+
+.IdolCardTable tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.IdolCardTable tr:nth-child(odd) {
+    background-color: #fff;
+}
