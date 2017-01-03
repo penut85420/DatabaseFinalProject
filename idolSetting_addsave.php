@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	include("com/db.php");
 	
 	$IdolName = $_POST["IdolName"];
@@ -17,10 +17,11 @@
 	$sql = "INSERT INTO idolsetting (IdolName, Height, Weight, age, Birthday, BloodType, ThreeSize, Handedness, Constellation, Place, Interest, CV) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
 	if ($stmt = $db->prepare($sql)) {
-		echo "Yeap";
 		$stmt->bind_param("siiissssssss", $IdolName, $Height, $Weight, $age, $Birthday, $BloodType, $ThreeSize, $Handedness, $Constellation, $Place, $Interest, $CV);
 		$stmt->execute();
 		$stmt->close();
 		header('Location: idolsetting.php');
+	} else {
+		echo $db->error;
 	}
 ?>

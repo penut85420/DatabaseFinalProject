@@ -5,11 +5,11 @@
     <?php include("com/head.php") ?>
     <script>
         function UpdateData() {
-            document.getElementById("CID").value = document.getElementById("ToyID").value;
-            document.getElementById("CardName").value = document.getElementById("TName").value;
-            document.getElementById("IdolName").value = document.getElementById("Price").value;
-            document.getElementById("Level").value = document.getElementById("Description").value;
-            document.getElementById("Shinaido").value = document.getElementById("Name").value;
+            document.getElementById("CID").value = document.getElementById("CID").value;
+            document.getElementById("CardName").value = document.getElementById("CardName").value;
+            document.getElementById("IdolName").value = document.getElementById("IdolName").value;
+            document.getElementById("Level").value = document.getElementById("Level").value;
+            document.getElementById("Shinaido").value = document.getElementById("Shinaido").value;
             document.getElementById("Form").action = "Producer_editact.php";
             document.getElementById("Form").submit();
         }
