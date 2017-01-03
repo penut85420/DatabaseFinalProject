@@ -7,6 +7,7 @@
     $Shinaido = $_POST["Shinaido"];
 
     $sql = "UPDATE Producer SET CID=?, CardName=?, IdolName=?, Level=?, Shinaido=? WHERE CID=?";
+
     if ($stmt = $db->prepare($sql)) {
         $stmt->bind_param("issiii", $CID, $CardName, $IdolName, $Level, $Shinaido, $CID);
         $stmt->execute();

@@ -39,40 +39,47 @@
         $OrderBy = "";
         if (isset($_POST["ORDERBY"])) {
              $OrderBy = $_POST["ORDERBY"];
-             echo $OrderBy;
         }
         else $OrderBy = "CID";
+
+        $ADSC = "ASC";
+        if (isset($_POST["ADSC"])) {
+            if ($_POST["ADSC"] == "ASC") {
+                $ADSC = "DESC";
+            } else {
+                $ADSC = "ASC";
+            }
+        }
      ?>
-    <input type = "hidden" name = "ORDERBY" id = "ORDERBY" value = "<?php if (isset($_POST["ORDERBY"])) echo $_POST["searchTarget"]; ?>">
-    <input type = "hidden" name = "ADSC" id = "ADSC" value = "<?php if (isset($_POST["ORDERBY"])) echo $_POST["searchTarget"]; ?>">
+    <input type = "hidden" name = "ORDERBY" id = "ORDERBY" value = "">
+    <input type = "hidden" name = "ADSC" id = "ADSC" value = "<?php echo $ADSC; ?>">
     <input type = "hidden" name = "searchTarget" id = "searchTarget" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
     <table class = "IdolCardTable">
         <tr>
-            <th><p onclick = "changeSort('CardName');">卡片名稱</p></th>
-            <th><p onclick = "changeSort('IdolName');">偶像</p></th>
-            <th>稀有度</th>
-            <th>屬性</th>
-            <th>Vocal</th>
-            <th>Dance</th>
-            <th>Visual</th>
-            <th>Life</th>
-            <th>隊長技</th>
-            <th>技能</th>
+            <th onclick = "changeSort('CardName');">卡片名稱</th>
+            <th onclick = "changeSort('IdolName');">偶像</th>
+            <th onclick = "changeSort('Rarity');">稀有度</th>
+            <th onclick = "changeSort('Type');">屬性</th>
+            <th onclick = "changeSort('Vocal');">Vocal</th>
+            <th onclick = "changeSort('Dance');">Dance</th>
+            <th onclick = "changeSort('Visual');">Visual</th>
+            <th onclick = "changeSort('Life');">Life</th>
+            <th onclick = "changeSort('Leader');">隊長技</th>
+            <th onclick = "changeSort('Skill');">技能</th>
         </tr>
         <?php
             if (isset($_POST["searchTarget"])) {
-                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ? ORDER BY ".$OrderBy." ".$ADSC;
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ? ORDER BY ";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
             } else if (isset($_POST["searchTargetExa"])) {
-                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName = ? ORDER BY ".$OrderBy." ".$ADSC;
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName = ? ORDER BY ";
                 $searchTarget = $_POST["searchTargetExa"];
             } else 
-                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY ".$OrderBy." ".$ADSC;
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY ";
+            $sql = $sql.$OrderBy." ".$ADSC;
             if ($stmt = $db->prepare($sql)) {
                 if (isset($_POST["searchTarget"])) {
                     $stmt->bind_param("s", $searchTarget);
-                } else {
-                    $stmt->bind_param("s", $OrderBy);
                 }
                 
                 $stmt->execute();

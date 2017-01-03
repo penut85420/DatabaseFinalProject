@@ -3,6 +3,13 @@
 <head>
     <title>Idol Setting</title>
     <?php include("com/head.php") ?>
+    <script>
+        function changeSort(s) {
+            document.getElementById("ORDERBY").value = s;
+            document.getElementById("Form").action = "IdolSetting.php";
+            document.getElementById("Form").submit();
+        }
+    </script>
 </head>
 <body>
     <?php include("com/menu.php"); ?>
@@ -26,21 +33,40 @@
 		?>
 	</div>
 
-    <form method = "POST" action = "IdolCard.php">
+    <form id = "Form" method = "POST" action = "IdolCard.php">
+    <?php 
+        $OrderBy = "";
+        if (isset($_POST["ORDERBY"])) {
+             $OrderBy = $_POST["ORDERBY"];
+        }
+        else $OrderBy = "IdolName";
+
+        $ADSC = "ASC";
+        if (isset($_POST["ADSC"])) {
+            if ($_POST["ADSC"] == "ASC") {
+                $ADSC = "DESC";
+            } else {
+                $ADSC = "ASC";
+            }
+        }
+     ?>
+    <input type = "hidden" name = "ORDERBY" id = "ORDERBY" value = "">
+    <input type = "hidden" name = "ADSC" id = "ADSC" value = "<?php echo $ADSC; ?>">
+    <input type = "hidden" name = "searchTarget" id = "searchTarget" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
     <table class = "IdolCardTable">
         <tr>
-            <th>偶像</th>
-            <th>身高</th>
-            <th>體重</th>
-            <th>年齡</th>
-            <th>生日</th>
-            <th>血型</th>
-            <th>三圍</th>
-            <th>慣用手</th>
-            <th>星座</th>
-            <th>出生地</th>
-            <th>興趣</th>
-            <th>CV</th>
+            <th onclick = "changeSort('IdolName');">偶像</th>
+            <th onclick = "changeSort('Height');">身高</th>
+            <th onclick = "changeSort('Weight');">體重</th>
+            <th onclick = "changeSort('Age');">年齡</th>
+            <th onclick = "changeSort('Birthday');">生日</th>
+            <th onclick = "changeSort('BloodType');">血型</th>
+            <th onclick = "changeSort('ThreeSize');">三圍</th>
+            <th onclick = "changeSort('Handedness');">慣用手</th>
+            <th onclick = "changeSort('Constellation');">星座</th>
+            <th onclick = "changeSort('Place');">出生地</th>
+            <th onclick = "changeSort('Interest');">興趣</th>
+            <th onclick = "changeSort('CV');">CV</th>
         </tr>
         <?php
             $searchTarget = "";
@@ -50,7 +76,8 @@
             } else if (isset($_POST["searchTargetExa"])) {
                 $sql = "SELECT * FROM idolsetting WHERE IdolName = ?";
                 $searchTarget = $_POST["searchTargetExa"];
-            } else $sql = "SELECT * FROM idolsetting ORDER BY idolname";
+            } else $sql = "SELECT * FROM idolsetting";
+            $sql = $sql." ORDER BY ".$OrderBy." ".$ADSC;
             if ($stmt = $db->prepare($sql)) {
                 if ($searchTarget)
                     $stmt->bind_param("s", $searchTarget);
@@ -76,6 +103,8 @@
                     </tr>
                     <?php
                 }
+            } else {
+                echo $db->error;
             }
         ?>
     </table>
