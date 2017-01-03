@@ -40,7 +40,7 @@
         if (isset($_POST["ORDERBY"])) {
              $OrderBy = $_POST["ORDERBY"];
         }
-        else $OrderBy = "CID";
+        if ($OrderBy == "") $OrderBy = "CID";
 
         $ADSC = "ASC";
         if (isset($_POST["ADSC"])) {
@@ -51,7 +51,7 @@
             }
         }
      ?>
-    <input type = "hidden" name = "ORDERBY" id = "ORDERBY" value = "">
+    <input type = "hidden" name = "ORDERBY" id = "ORDERBY">
     <input type = "hidden" name = "ADSC" id = "ADSC" value = "<?php echo $ADSC; ?>">
     <input type = "hidden" name = "searchTarget" id = "searchTarget" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
     <table class = "IdolCardTable">
@@ -68,15 +68,16 @@
             <th onclick = "changeSort('Skill');">技能</th>
         </tr>
         <?php
-            if (isset($_POST["searchTarget"])) {
-                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ? ORDER BY ";
-                $searchTarget = "%".$_POST["searchTarget"]."%";
-            } else if (isset($_POST["searchTargetExa"])) {
+            if (isset($_POST["searchTargetExa"])) {
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName = ? ORDER BY ";
                 $searchTarget = $_POST["searchTargetExa"];
+            } else if (isset($_POST["searchTarget"])) {
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ? ORDER BY ";
+                $searchTarget = "%".$_POST["searchTarget"]."%";
             } else 
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY ";
             $sql = $sql.$OrderBy." ".$ADSC;
+            
             if ($stmt = $db->prepare($sql)) {
                 if (isset($_POST["searchTarget"])) {
                     $stmt->bind_param("s", $searchTarget);

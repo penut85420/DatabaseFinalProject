@@ -39,7 +39,7 @@
         if (isset($_POST["ORDERBY"])) {
              $OrderBy = $_POST["ORDERBY"];
         }
-        else $OrderBy = "IdolName";
+        if ($OrderBy == "") $OrderBy = "IdolName";
 
         $ADSC = "ASC";
         if (isset($_POST["ADSC"])) {
@@ -50,7 +50,7 @@
             }
         }
      ?>
-    <input type = "hidden" name = "ORDERBY" id = "ORDERBY" value = "">
+    <input type = "hidden" name = "ORDERBY" id = "ORDERBY">
     <input type = "hidden" name = "ADSC" id = "ADSC" value = "<?php echo $ADSC; ?>">
     <input type = "hidden" name = "searchTarget" id = "searchTarget" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
     <table class = "IdolCardTable">
@@ -70,14 +70,15 @@
         </tr>
         <?php
             $searchTarget = "";
-            if (isset($_POST["searchTarget"])) {
-                $sql = "SELECT * FROM idolsetting WHERE IdolName LIKE ?";
-                $searchTarget = "%".$_POST["searchTarget"]."%";
-            } else if (isset($_POST["searchTargetExa"])) {
+            if (isset($_POST["searchTargetExa"])) {
                 $sql = "SELECT * FROM idolsetting WHERE IdolName = ?";
                 $searchTarget = $_POST["searchTargetExa"];
-            } else $sql = "SELECT * FROM idolsetting";
+            } else if (isset($_POST["searchTarget"])) {
+                $sql = "SELECT * FROM idolsetting WHERE IdolName LIKE ?";
+                $searchTarget = "%".$_POST["searchTarget"]."%";
+            } else  $sql = "SELECT * FROM idolsetting";
             $sql = $sql." ORDER BY ".$OrderBy." ".$ADSC;
+
             if ($stmt = $db->prepare($sql)) {
                 if ($searchTarget)
                     $stmt->bind_param("s", $searchTarget);
