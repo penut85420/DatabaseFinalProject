@@ -5,7 +5,6 @@
 </head>
 <body>
     <?php include("com/menu.php"); ?>
-    <p>This is our database final project.</p>
-    <p>Click link above to go to other site.</p>
+    <img src = "img/imas.jpg" style = "width: 100%;">
 </body>
 </html>
