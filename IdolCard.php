@@ -17,9 +17,30 @@
     <form method = "post" action = "IdolCard.php">
         <input type = "text" name = "searchTarget" 
             placeholder = "搜尋偶像名稱" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
-        <input type = "submit" value = "Search">
+        <input type = "submit" value = "搜尋">
         <a href = "IdolCard_add.php"><input type = "button" value = "Add"></a>
     </form>
+    進階搜尋：
+    <form method = "post" action = "IdolCard.php">
+        <select name = "SearchRarity">
+            <option value = "N">N</option>
+            <option value = "N+">N+</option>
+            <option value = "R">R</option>
+            <option value = "R+">R+</option>
+            <option value = "SR">SR</option>
+            <option value = "SR+">SR+</option>
+            <option value = "SSR">SSR</option>
+            <option value = "SSR+">SSR+</option>
+        </select>
+        
+        <select name = "SearchType">
+            <option value = "Cute">Cute</option>
+            <option value = "Cool">Cool</option>
+            <option value = "Passion">Passion</option>
+        </select>
+        <input type = "submit" value = "送出">
+    </form>
+
 
     </div>
 
@@ -74,13 +95,19 @@
             } else if (isset($_POST["searchTarget"])) {
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE IdolName LIKE ? ORDER BY ";
                 $searchTarget = "%".$_POST["searchTarget"]."%";
-            } else 
+            } else if (isset($_POST["SearchRarity"])) {
+                $SearchRarity = $_POST["SearchRarity"];
+                $SearchType = $_POST["SearchType"];
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE CID IN (SELECT CID FROM idolcard WHERE Rarity = ? AND Type = ?) ORDER BY ";
+            } else
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY ";
             $sql = $sql.$OrderBy." ".$ADSC;
             
             if ($stmt = $db->prepare($sql)) {
                 if (isset($_POST["searchTarget"])) {
                     $stmt->bind_param("s", $searchTarget);
+                } else if (isset($_POST["SearchRarity"])) {
+                    $stmt->bind_param("ss", $SearchRarity, $SearchType);
                 }
                 
                 $stmt->execute();
@@ -105,6 +132,8 @@
                     
                     <?php
                 }
+            } else {
+                echo $db->error;
             }
         ?>
     </table>

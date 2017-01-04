@@ -43,8 +43,8 @@ a:active {
 
 .IdolCardTable th {
     border: 1px solid black;
-    width: 10em;
     background: #aaa;
+    width: 5%;
 }
 
 .IdolCardTable td {
