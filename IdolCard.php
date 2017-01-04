@@ -18,7 +18,7 @@
         <input type = "text" name = "searchTarget" 
             placeholder = "搜尋偶像名稱" value = "<?php if (isset($_POST["searchTarget"])) echo $_POST["searchTarget"]; ?>">
         <input type = "submit" value = "搜尋">
-        <a href = "IdolCard_add.php"><input type = "button" value = "Add"></a>
+        <a href = "IdolCard_add.php"><input type = "button" value = "新增"></a>
     </form>
     進階搜尋：
     <form method = "post" action = "IdolCard.php">

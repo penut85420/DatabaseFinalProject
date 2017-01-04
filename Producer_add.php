@@ -11,10 +11,10 @@
 		<tr>
 			<th>#</th>
             <th>CID</th>
-            <th>Card Name</th>
-            <th>Idol Name</th>
-            <th>Level</th>
-            <th>Shinaido</th>
+            <th>卡片名稱</th>
+            <th>偶像</th>
+            <th>等級</th>
+            <th>親愛度</th>
         </tr>
 		<tr>
 			<td><input type="submit" value="新增"></td>

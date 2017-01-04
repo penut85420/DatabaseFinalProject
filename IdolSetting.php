@@ -17,8 +17,8 @@
     <div class = "Search">
     <form method = "post" action = "IdolSetting.php">
         <input type = "text" name = "searchTarget" placeholder = "搜尋偶像名稱">
-        <input type = "submit" value = "Search">
-        <a href = "IdolSetting_add.php"><input type = "button" value = "Add"></a>
+        <input type = "submit" value = "搜尋">
+        <a href = "IdolSetting_add.php"><input type = "button" value = "新增"></a>
     </form>
     </div>
 
