@@ -23,6 +23,7 @@
     進階搜尋：
     <form method = "post" action = "IdolCard.php">
         <select name = "SearchRarity">
+            <option value = "%">任意</option>
             <option value = "N">N</option>
             <option value = "N+">N+</option>
             <option value = "R">R</option>
@@ -34,6 +35,7 @@
         </select>
         
         <select name = "SearchType">
+            <option value = "%">任意</option>
             <option value = "Cute">Cute</option>
             <option value = "Cool">Cool</option>
             <option value = "Passion">Passion</option>
@@ -98,7 +100,8 @@
             } else if (isset($_POST["SearchRarity"])) {
                 $SearchRarity = $_POST["SearchRarity"];
                 $SearchType = $_POST["SearchType"];
-                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE CID IN (SELECT CID FROM idolcard WHERE Rarity = ? AND Type = ?) ORDER BY ";
+
+                $sql = "SELECT * FROM idolability NATURAL JOIN idolcard WHERE CID IN (SELECT CID FROM idolcard WHERE Rarity LIKE ? AND Type LIKE ?) ORDER BY ";
             } else
                 $sql = "SELECT * FROM idolability NATURAL JOIN idolcard ORDER BY ";
             $sql = $sql.$OrderBy." ".$ADSC;
